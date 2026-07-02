@@ -47,11 +47,11 @@ export async function buscarPaciente(req, res) {
 // Criar paciente
 export async function criarPaciente(req, res) {
   try {
-    const { nome, idade } = req.body;
+    const { nome, idade, sexo } = req.body;
 
-    if (!nome || idade === undefined) {
+    if (!nome || idade === undefined || !sexo) {
       return res.status(400).json({
-        message: "Nome e idade são obrigatórios.",
+        message: "Nome, idade e sexo são obrigatórios.",
       });
     }
 
@@ -59,6 +59,7 @@ export async function criarPaciente(req, res) {
       data: {
         nome,
         idade: Number(idade),
+        sexo,
       },
     });
 
@@ -75,13 +76,14 @@ export async function criarPaciente(req, res) {
 export async function atualizarPaciente(req, res) {
   try {
     const id = Number(req.params.id);
-    const { nome, idade } = req.body;
+    const { nome, idade, sexo } = req.body;
 
     const paciente = await prisma.paciente.update({
       where: { id },
       data: {
         nome,
         idade: Number(idade),
+        sexo,
       },
     });
 

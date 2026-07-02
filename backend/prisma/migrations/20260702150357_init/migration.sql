@@ -1,12 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Usuario` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "Usuario";
-
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -70,6 +61,7 @@ CREATE TABLE "Paciente" (
     "id" SERIAL NOT NULL,
     "nome" TEXT NOT NULL,
     "idade" INTEGER NOT NULL,
+    "sexo" TEXT NOT NULL,
 
     CONSTRAINT "Paciente_pkey" PRIMARY KEY ("id")
 );
